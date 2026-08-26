@@ -1,0 +1,212 @@
+.prefecture-map {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  overflow: hidden;
+  background: #327ad2;
+  box-shadow: inset 0 0 40px rgb(13 58 123 / 24%);
+}
+
+.prefecture-map__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  touch-action: none;
+  user-select: none;
+  cursor: grab;
+  shape-rendering: crispEdges;
+}
+
+.prefecture-map__svg:active {
+  cursor: grabbing;
+}
+
+.prefecture-map__water {
+  pointer-events: none;
+}
+
+.prefecture-map__prefecture {
+  fill: var(--prefecture-fill, #8fc96a);
+  stroke: #34483f;
+  stroke-width: 1.7;
+  stroke-linejoin: bevel;
+  vector-effect: non-scaling-stroke;
+  cursor: pointer;
+}
+
+.prefecture-map__prefecture:hover,
+.prefecture-map__prefecture:focus-visible,
+.prefecture-map__prefecture[data-hovered="true"] {
+  filter: brightness(1.15) saturate(1.18);
+  stroke: #d8d39a;
+  stroke-width: 3;
+  outline: none;
+}
+
+.prefecture-map__prefecture:focus-visible {
+  stroke: #f5ecc1;
+  stroke-width: 4;
+}
+
+.prefecture-map__prefecture[aria-pressed="true"] {
+  stroke: #f2cf62;
+  stroke-width: 4;
+  filter: brightness(1.08) drop-shadow(0 0 3px rgb(242 207 98 / 65%));
+}
+
+.prefecture-map__terrain {
+  pointer-events: none;
+}
+
+.prefecture-map__terrain path {
+  stroke: none;
+}
+
+.prefecture-map__label {
+  filter: drop-shadow(2px 3px 1px rgb(10 24 35 / 55%));
+  pointer-events: none;
+}
+
+.prefecture-map__label rect {
+  fill: rgb(29 36 38 / 88%);
+  stroke: #59615d;
+  stroke-width: 1.5;
+}
+
+.prefecture-map__label text {
+  fill: #fff6ca;
+  font-family: "DotGothic16", "Noto Sans JP", sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.prefecture-map__capital {
+  fill: #fff071;
+  stroke: #4a5325;
+  stroke-width: 2;
+}
+
+.prefecture-map__command rect,
+.prefecture-map__command path {
+  fill: #89918a;
+  stroke: #26322f;
+  stroke-width: 2;
+}
+
+.prefecture-map__command .command-base {
+  fill: #555f5a;
+}
+
+.prefecture-map__command .command-pole {
+  fill: #d7d0ad;
+  stroke: none;
+}
+
+.prefecture-map__command .command-flag {
+  fill: #c84e45;
+  stroke: #462d2b;
+}
+
+.prefecture-map__command .command-roof {
+  fill: #68736c;
+}
+
+.prefecture-map__command .command-door {
+  fill: #d9bd60;
+  stroke: #26322f;
+}
+
+.prefecture-map__details {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  z-index: 3;
+  min-width: min(360px, calc(100% - 130px));
+  padding: 0.5rem 0.9rem;
+  color: #fff8d7;
+  border: 2px solid #202925;
+  border-radius: 4px;
+  background: rgb(35 43 40 / 88%);
+  box-shadow:
+    0 4px 0 rgb(15 25 27 / 45%),
+    inset 0 1px 0 rgb(255 255 255 / 20%);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: center;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.prefecture-map__camera-controls {
+  position: absolute;
+  right: 14px;
+  bottom: 62px;
+  z-index: 4;
+  display: grid;
+  gap: 5px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+.prefecture-map__camera-controls button {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  place-items: center;
+  color: #f5f1d5;
+  border: 2px solid #27302a;
+  border-radius: 8px;
+  background: #50584b;
+  box-shadow:
+    0 4px 0 #252d27,
+    inset 0 2px 0 rgb(255 255 255 / 18%);
+  font-size: 1.35rem;
+  font-weight: 900;
+}
+
+.prefecture-map__camera-controls button:hover {
+  background: #69735f;
+}
+
+.prefecture-map__camera-controls button:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #252d27;
+}
+
+.prefecture-map__zoom {
+  position: absolute;
+  right: 14px;
+  bottom: 32px;
+  color: rgb(255 255 255 / 75%);
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-shadow: 0 1px 2px #154376;
+}
+
+@media (max-width: 620px) {
+  .prefecture-map {
+    min-height: 520px;
+  }
+
+  .prefecture-map__details {
+    top: 58px;
+    left: 12px;
+    min-width: 0;
+    max-width: calc(100% - 76px);
+    transform: none;
+  }
+
+  .prefecture-map__camera-controls {
+    right: 10px;
+    bottom: 50px;
+  }
+
+  .prefecture-map__camera-controls button {
+    width: 38px;
+    height: 38px;
+  }
+}
